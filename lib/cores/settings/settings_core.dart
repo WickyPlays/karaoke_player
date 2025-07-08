@@ -19,3 +19,13 @@ Future<void> setSongsDirectory(String value) async {
   final prefs = await SharedPreferences.getInstance();
   await prefs.setString('settings.directories.songsPath', value);
 }
+
+Future<bool?> isEnableTitleBackgroundMusic() async {
+  final prefs = await SharedPreferences.getInstance();
+  return prefs.getBool('settings.general.enableTitleBackgroundMusic');
+}
+
+Future<void> setEnableTitleBackgroundMusic(bool value) async {
+  final prefs = await SharedPreferences.getInstance();
+  await prefs.setBool('settings.general.enableTitleBackgroundMusic', value);
+}

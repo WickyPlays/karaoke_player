@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:karaoke_player/components/settings/settings_directories.dart';
+import 'package:karaoke_player/components/settings/settings_general.dart';
 import 'package:karaoke_player/components/settings/settings_languages.dart';
 import 'package:media_kit/media_kit.dart';
 import 'package:media_kit_video/media_kit_video.dart';
@@ -86,7 +87,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Custom sidebar replacing NavigationRail
                         Container(
                           width: 200,
                           decoration: BoxDecoration(
@@ -146,7 +146,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget _buildActiveTabContent() {
     switch (_activeTab) {
       case 0:
-        return Text('settings.general.empty'.tr(), style: const TextStyle(color: Colors.white));
+        return const SettingsGeneral();
       case 1:
         return const SettingsLanguages();
       case 2:
