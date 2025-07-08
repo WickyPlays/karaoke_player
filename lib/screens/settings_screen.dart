@@ -38,88 +38,114 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          SizedBox.expand(
-            child: Video(
-              controller: videoController,
-              controls: NoVideoControls,
-              fit: BoxFit.cover,
-            ),
-          ),
-          Center(
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.8,
-              height: MediaQuery.of(context).size.height * 0.9,
-              decoration: BoxDecoration(
-                color: const Color(0xFF1E1E1E),
-                borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
-                border: Border.all(color: const Color(0xFF333333)),
-                boxShadow: const [BoxShadow(color: Colors.black54, blurRadius: 20, offset: Offset(0, -4))],
+    return Material(
+      type: MaterialType.transparency,
+      child: Scaffold(
+        body: Stack(
+          children: [
+            SizedBox.expand(
+              child: Video(
+                controller: videoController,
+                controls: NoVideoControls,
+                fit: BoxFit.cover,
               ),
-              child: Column(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF121212),
-                      border: Border(bottom: BorderSide(color: const Color(0xFF333333))),
-                    ),
-                    child: Row(
-                      children: [
-                        IconButton(
-                          icon: const Icon(Icons.arrow_back, color: Colors.white),
-                          onPressed: () => Navigator.pop(context),
-                        ),
-                        const SizedBox(width: 16),
-                        Text(
-                          'settings.title'.tr(),
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 24,
-                          ),
-                        ),
-                      ],
-                    ),
+            ),
+            Center(
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.8,
+                height: MediaQuery.of(context).size.height * 0.9,
+                decoration: BoxDecoration(
+                  color: const Color(0xFF1E1E1E),
+                  borderRadius: const BorderRadius.vertical(
+                    top: Radius.circular(20),
                   ),
-                  Expanded(
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: 200,
-                          decoration: BoxDecoration(
-                            color: const Color(0xFF121212),
-                            border: Border(right: BorderSide(color: const Color(0xFF333333))),
-                          ),
-                          child: ListView(
-                            padding: EdgeInsets.zero,
-                            children: [
-                              _buildSidebarItem(0, 'settings.general'.tr()),
-                              _buildSidebarItem(1, 'settings.language'.tr()),
-                              _buildSidebarItem(2, 'settings.lyrics.tab'.tr()),
-                              _buildSidebarItem(3, 'settings.directories.tab'.tr()),
-                            ],
-                          ),
+                  border: Border.all(color: const Color(0xFF333333)),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.black54,
+                      blurRadius: 20,
+                      offset: Offset(0, -4),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF121212),
+                        border: Border(
+                          bottom: BorderSide(color: const Color(0xFF333333)),
                         ),
-                        Expanded(
-                          child: Container(
-                            color: const Color(0xFF1E1E1E),
-                            padding: const EdgeInsets.all(24),
-                            child: SingleChildScrollView(
-                              child: _buildActiveTabContent(),
+                      ),
+                      child: Row(
+                        children: [
+                          IconButton(
+                            icon: const Icon(
+                              Icons.arrow_back,
+                              color: Colors.white,
+                            ),
+                            onPressed: () => Navigator.pop(context),
+                          ),
+                          const SizedBox(width: 16),
+                          Text(
+                            'settings.title'.tr(),
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 24,
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                    Expanded(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 200,
+                            decoration: BoxDecoration(
+                              color: const Color(0xFF121212),
+                              border: Border(
+                                right: BorderSide(
+                                  color: const Color(0xFF333333),
+                                ),
+                              ),
+                            ),
+                            child: ListView(
+                              padding: EdgeInsets.zero,
+                              children: [
+                                _buildSidebarItem(0, 'settings.general'.tr()),
+                                _buildSidebarItem(1, 'settings.language'.tr()),
+                                _buildSidebarItem(
+                                  2,
+                                  'settings.lyrics.tab'.tr(),
+                                ),
+                                _buildSidebarItem(
+                                  3,
+                                  'settings.directories.tab'.tr(),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              color: const Color(0xFF1E1E1E),
+                              padding: const EdgeInsets.all(24),
+                              child: SingleChildScrollView(
+                                child: _buildActiveTabContent(),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -130,12 +156,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
         decoration: BoxDecoration(
-          color: _activeTab == index ? const Color(0xFF1E1E1E) : Colors.transparent,
+          color: _activeTab == index
+              ? const Color(0xFF1E1E1E)
+              : Colors.transparent,
         ),
         child: Text(
           title,
           style: TextStyle(
-            color: _activeTab == index ? Colors.white : Colors.white.withValues(alpha: 0.6),
+            color: _activeTab == index
+                ? Colors.white
+                : Colors.white.withValues(alpha: 0.6),
             fontSize: 16,
           ),
         ),

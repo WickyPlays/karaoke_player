@@ -27,15 +27,22 @@ class _SettingsGeneralState extends State<SettingsGeneral> {
 
   @override
   Widget build(BuildContext context) {
-    return SwitchListTile(
-      title: const Text('Enable title background music'),
-      value: _enableTitleBackgroundMusic,
-      onChanged: (value) {
-        setState(() {
-          _enableTitleBackgroundMusic = value;
-        });
-        _handleEnableTitleBackgroundMusic(value);
-      },
+    return Column(
+      children: [
+        SwitchListTile(
+          title: const Text(
+            'Enable title background music',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+          ),
+          value: _enableTitleBackgroundMusic,
+          onChanged: (value) {
+            setState(() {
+              _enableTitleBackgroundMusic = value;
+            });
+            _handleEnableTitleBackgroundMusic(value);
+          },
+        ),
+      ],
     );
   }
 

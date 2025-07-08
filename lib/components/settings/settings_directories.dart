@@ -94,9 +94,7 @@ class _SettingsDirectoriesState extends State<SettingsDirectories> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
+    return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildDirectorySetting(
@@ -111,8 +109,7 @@ class _SettingsDirectoriesState extends State<SettingsDirectories> {
             onSelect: _selectSongsDirectory,
           ),
         ],
-      ),
-    );
+      );
   }
 
   Widget _buildDirectorySetting({
@@ -126,7 +123,7 @@ class _SettingsDirectoriesState extends State<SettingsDirectories> {
         Text(
           label,
           style: const TextStyle(
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w600,
             fontSize: 16,
           ),
         ),
